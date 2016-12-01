@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Console;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ActivityDataAccess activityDataAccess;
     private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
+    private TextView txtDate,txtCal,txtAmAct;
 
 
     @Override
@@ -57,7 +59,13 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        txtAmAct= (TextView) findViewById(R.id.txtAmAct);
+        txtCal=(TextView) findViewById(R.id.txtCal);
+        txtDate=(TextView) findViewById(R.id.txtDate);
+
         activityDataAccess=new ActivityDataAccess(this);
+        getAllActivitiesOfDay();
+
     }
 
     @Override
@@ -134,23 +142,27 @@ public class MainActivity extends AppCompatActivity
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
 
+        txtDate.setText(date);
+
         sumActPerDay=0;
         sumAmountExPerDay=0;
         sumCalPerDay=0;
         sumDistPerDay=0;
         List<String> act_list=new ArrayList<String>();
-        for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)){
+        for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)) {
             act_list.add(a.toString());
-            sumCalPerDay=sumCalPerDay+a.getCalories();
-            sumDistPerDay=sumDistPerDay+a.getDistance();
-            sumAmountExPerDay=sumAmountExPerDay+a.getAmountPerExercise();
+            sumCalPerDay = sumCalPerDay + a.getCalories();
+            sumDistPerDay = sumDistPerDay + a.getDistance();
+            sumAmountExPerDay = sumAmountExPerDay + a.getAmountPerExercise();
             sumActPerDay++;
-            Log.i("DATA: ",a.toString()+"!!!!!!!!!!!!");
+            Log.i("DATA: ", a.toString() + "!!!!!!!!!!!!");
         }
         Log.i("KALORIEN: ",sumCalPerDay+"");
         Log.i("DISTANZ: ",sumDistPerDay+"");
         Log.i("EXERCISES: ",sumAmountExPerDay+"");
         Log.i("ACTIVITIES: ",sumActPerDay+"");
+      /*txtCal.setText(sumCalPerDay);
+        txtAmAct.setText(sumActPerDay); */
         return act_list;
     }
 }
