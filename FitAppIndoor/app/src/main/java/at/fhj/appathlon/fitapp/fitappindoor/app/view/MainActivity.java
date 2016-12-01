@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,10 +16,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+
 import at.fhj.appathlon.fitapp.fitappindoor.R;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private ActivityDataAccess activityDataAccess;
+    private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +54,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        activityDataAccess=new ActivityDataAccess(this);
+        testDB();
     }
 
     @Override
@@ -110,7 +123,39 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void addActivity() {
-        Intent i = new Intent(this,AddActivityActivity.class);
+        Intent i = new Intent(this, AddActivityActivity.class);
         startActivity(i);
+    }
+
+    public void testDB(){
+        Activity test=new Activity(1,"Schwimmen",10,5,"01.12.2016",183,"01:00");
+        Activity test2=new Activity(2,"Radln",40,0,"02.12.2016",40,"02:01");
+        Activity test3=new Activity(2,"Radln",10,4,"02.12.2016",90,"02:01");
+        activityDataAccess.addNewActivity(test);
+        activityDataAccess.addNewActivity(test2);
+        activityDataAccess.addNewActivity(test3);
+        getAllActivitiesOfDay();
+
+    }
+
+    public List<String> getAllActivitiesOfDay(){
+        sumActPerDay=0;
+        sumAmountExPerDay=0;
+        sumCalPerDay=0;
+        sumDistPerDay=0;
+        List<String> act_list=new ArrayList<String>();
+        for(Activity a : activityDataAccess.getAllActivitiesPerDay("02.12.2016")){
+            act_list.add(a.toString());
+            sumCalPerDay=sumCalPerDay+a.getCalories();
+            sumDistPerDay=sumDistPerDay+a.getDistance();
+            sumAmountExPerDay=sumAmountExPerDay+a.getAmountPerExercise();
+            sumActPerDay++;
+            Log.i("DATA: ",a.toString()+"!!!!!!!!!!!!");
+        }
+        Log.i("KALORIEN: ",sumCalPerDay+"");
+        Log.i("DISTANZ: ",sumDistPerDay+"");
+        Log.i("EXERCISES: ",sumAmountExPerDay+"");
+        Log.i("ACTIVITIES: ",sumActPerDay+"");
+        return act_list;
     }
 }
