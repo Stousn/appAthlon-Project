@@ -9,18 +9,22 @@ import java.sql.Time;
 
 public class Activity {
     private String sportType;
-    private int distance, calories;
+    private int id,distance, calories;
     private int amountPerExercise, amountActivities;
     private String duration, durationPerActivity;
     private String date;
 
-    public Activity(String sportType, int distance, int amountPerExercise,String date, int calories, String duration_p_A ){
+    public Activity(int id,String sportType, int distance, int amountPerExercise,String date, int calories, String duration_p_A ){
+        this.id=id;
         this.sportType=sportType;
         this.distance=distance;
         this.amountPerExercise=amountPerExercise;
         this.date=date;
         this.calories=calories;
         this.durationPerActivity=duration_p_A;
+    }
+    public Activity(){
+
     }
 
     public String getSportType() {
@@ -85,5 +89,17 @@ public class Activity {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public  String toString(){
+        return sportType+"; "+id+"; "+distance+"; "+calories+"; "+amountPerExercise+"; "+amountActivities+"; "+duration+"; "+durationPerActivity+"; "+date;
     }
 }

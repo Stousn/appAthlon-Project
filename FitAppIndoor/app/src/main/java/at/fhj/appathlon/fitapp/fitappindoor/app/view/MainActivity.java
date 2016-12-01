@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,10 +15,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+
 import at.fhj.appathlon.fitapp.fitappindoor.R;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private ActivityDataAccess activityDataAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        activityDataAccess=new ActivityDataAccess(this);
+        testDB();
     }
 
     @Override
@@ -106,5 +117,23 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    public void testDB(){
+        Activity test=new Activity(1,"Schwimmen",10,5,"19.12.2018",183,"01:00");
+        activityDataAccess.addNewActivity(test);
+        getAllActivities();
+
+    }
+
+    public List<String> getAllActivities(){
+        List<String> act_list=new ArrayList<String>();
+        for(Activity a : activityDataAccess.getAllActivities()){
+            act_list.add(a.toString());
+            Log.i("DATA: ",a.toString()+"!!!!!!!!!!!!");
+        }
+        return act_list;
     }
 }
