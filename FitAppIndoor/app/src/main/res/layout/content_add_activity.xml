@@ -35,15 +35,17 @@
 
     <!--Amount-->
 
-    <Button
+    <!--<Button-->
+    <EditText
         android:id="@+id/activityAmountMinutes"
         android:text="@string/activityAmountMinutes"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activityAmountKcal"
         android:layout_alignParentStart="true"
-        android:onClick="showTimePickerDialog"
         />
+        <!--android:onClick="showTimePickerDialog"-->
+
 
     <EditText
         android:id="@+id/activityAmountAmount"
