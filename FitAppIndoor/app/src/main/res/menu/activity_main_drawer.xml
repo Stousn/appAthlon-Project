@@ -4,15 +4,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_diary"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/list"
             android:title="Diary" />
         <item
             android:id="@+id/nav_statistics"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/statistic"
             android:title="Statistics" />
         <item
             android:id="@+id/nav_weight"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/weight"
             android:title="Weight Log" />
     </group>
 
@@ -20,15 +20,15 @@
         <menu>
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/settings"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/facebook"
                 android:title="Like us on Facebook" />
             <item
                 android:id="@+id/nav_feeback"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/feedback"
                 android:title="Feedback" />
         </menu>
     </item>
