@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         activityDataAccess=new ActivityDataAccess(this);
-        testDB();
     }
 
     @Override
@@ -129,19 +128,6 @@ public class MainActivity extends AppCompatActivity
         startActivity(i);
     }
 
-    public void testDB(){
-        addActivity();
-        getAllActivitiesOfDay();
-
-    }
-
-    public void addActivity(){
-        //TODO Activity Übergabeparamter einlesen
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        String date = sdf.format(new Date());
-        Activity a=new Activity(1,"Test",100,5,date,200,"01:00");
-        activityDataAccess.addNewActivity(a);
-    }
 
     public List<String> getAllActivitiesOfDay(){
         //TODO Datum als Input
