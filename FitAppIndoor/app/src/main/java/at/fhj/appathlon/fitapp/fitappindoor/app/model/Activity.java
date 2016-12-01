@@ -100,6 +100,6 @@ public class Activity {
     }
 
     public  String toString(){
-        return sportType+"; "+id+"; "+distance+"; "+calories+"; "+amountPerExercise+"; "+amountActivities+"; "+duration+"; "+durationPerActivity+"; "+date;
+        return "Sport Art " +sportType+"; Distanz "+distance+"; Kalorien "+calories+"; Anzahl/Uebung "+amountPerExercise+"; Anzahl/Tag "+amountActivities+"; Dauer "+duration+"; Dauer/Act. "+durationPerActivity+"; Datum "+date;
     }
 }

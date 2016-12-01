@@ -64,4 +64,27 @@ public class ActivityDataAccess {
         database.close();
         return activityList;
     }
+
+    public List<Activity> getAllActivitiesPerDay(String query_date){
+        database=dbHelper.getReadableDatabase();
+
+        List<Activity> listA=new ArrayList<Activity>();
+        Cursor cursor=database.query(true,ActivityDBHelper.TABLE_NAME,new String[]{ ActivityDBHelper.TYPE,ActivityDBHelper.DISTANCE,ActivityDBHelper.AMOUNT_P_E,ActivityDBHelper.DATE_EXERC,ActivityDBHelper.DURATION,ActivityDBHelper.CALOR},
+                ActivityDBHelper.DATE_EXERC+"=?", new String[]{query_date},null,null,null,null);
+
+        Activity tmpActivity=null;
+        if(cursor.moveToFirst()) {
+            do {
+                tmpActivity=new Activity();
+                tmpActivity.setSportType(cursor.getString(0));
+                tmpActivity.setDistance(cursor.getInt(1));
+                tmpActivity.setAmountPerExercise(cursor.getInt(2));
+                tmpActivity.setDate(cursor.getString(3));
+                tmpActivity.setDuration(cursor.getString(4));
+                tmpActivity.setCalories(cursor.getInt(5));
+                listA.add(tmpActivity);
+            } while (cursor.moveToNext());
+        }
+        return listA;
+    }
 }
