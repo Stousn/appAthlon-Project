@@ -19,6 +19,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".app.view.Statistics"
+            android:label="Statistics">
+        </activity>
+        <activity android:name=".app.view.WeightLog"
+            android:label="Weight Log">
+        </activity>
     </application>
 
 </manifest>
