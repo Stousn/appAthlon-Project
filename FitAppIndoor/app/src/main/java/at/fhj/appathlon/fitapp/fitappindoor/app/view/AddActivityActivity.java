@@ -56,7 +56,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
         edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
         edtCal=(EditText) findViewById(R.id.activityAmountKcal);
-        edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
+//        edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
         butSave=(Button) findViewById(R.id.activitySave);
 
         activityDataAccess=new ActivityDataAccess(this);
