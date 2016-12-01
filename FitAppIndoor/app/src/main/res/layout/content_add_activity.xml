@@ -20,29 +20,70 @@
         android:entries="@array/activityTypes"
         />
 
+    <!--Kcal-->
     <EditText
-        android:id="@+id/activityAmount"
-        android:text="@string/activityAmount"
+        android:id="@+id/activityAmountKcal"
+        android:text="@string/activityAmountKcal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activityType_spinner"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        />
 
-    <Spinner
-        android:id="@+id/activityAmountSI"
+
+    <!--Time-->
+
+    <!--Amount-->
+
+    <EditText
+        android:id="@+id/activityAmountMinutes"
+        android:text="@string/activityAmountMinutes"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:entries="@array/activityAmountSI"
-        android:layout_below="@+id/activityType_spinner"
-        android:layout_toEndOf="@+id/activityAmount"
-        android:layout_alignBottom="@+id/activityAmount" />
+        android:layout_below="@+id/activityAmountKcal"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/activityAmountAmount"
+        android:text="@string/activityAmountAmount"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activityAmountMinutes"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/activityKcal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activityKcal"
+        android:layout_alignBaseline="@+id/activityAmountKcal"
+        android:layout_alignBottom="@+id/activityAmountKcal"
+        android:layout_toEndOf="@+id/activityAmountKcal" />
+
+    <TextView
+        android:id="@+id/activityAmount"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activityAmount"
+        android:layout_alignBaseline="@+id/activityAmountAmount"
+        android:layout_alignBottom="@+id/activityAmountAmount"
+        android:layout_toEndOf="@+id/activityAmountAmount" />
+
+    <TextView
+        android:id="@+id/activityTime"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activityMinutes"
+        android:layout_alignBaseline="@+id/activityAmountMinutes"
+        android:layout_alignBottom="@+id/activityAmountMinutes"
+        android:layout_toEndOf="@+id/activityAmountMinutes" />
 
     <Button
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:text="@string/activitySaveBtn"
-        android:layout_below="@+id/activityAmount"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/activityAmountAmount"
+        android:layout_alignEnd="@+id/activityAmount" />
 
 
 </RelativeLayout>
