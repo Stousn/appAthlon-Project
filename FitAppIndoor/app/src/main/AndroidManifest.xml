@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".app.view.Statistics"
             android:label="Statistics"
             android:theme="@style/AppTheme.NoActionBar">
@@ -27,6 +28,13 @@
             android:label="Weight Log"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+
+        <activity
+            android:name=".app.view.AddActivityActivity"
+            android:label="@string/title_activity_add_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

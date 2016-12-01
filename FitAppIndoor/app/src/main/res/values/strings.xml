@@ -5,4 +5,31 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_add_activity">Add Activity</string>
+
+    <string name="activityType">Activity: </string>
+
+    <string-array name="activityTypes">
+        <item>Treadmill</item>
+        <item>Cross Trainer</item>
+        <item>Stair-Master</item>
+        <item>Ergometer</item>
+        <item>Spinning Bike</item>
+        <item>Rowing machine</item>
+        <item>Push-Ups</item>
+        <item>Sit-Ups</item>
+        <item>Squats</item>
+        <item>Pull-Ups</item>
+        <item>Burpees</item>
+    </string-array>
+
+    <string name="activityAmount">0</string>
+
+    <string-array name="activityAmountSI">
+        <item>kcal</item>
+        <item>minutes</item>
+        <item>amount</item>
+    </string-array>
+
+    <string name="activitySaveBtn">Save</string>
 </resources>

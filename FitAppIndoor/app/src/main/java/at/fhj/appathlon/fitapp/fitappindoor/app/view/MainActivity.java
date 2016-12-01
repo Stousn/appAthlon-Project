@@ -14,9 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.io.Console;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import at.fhj.appathlon.fitapp.fitappindoor.R;
@@ -40,8 +43,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                addActivity();
             }
         });
 
@@ -122,25 +125,33 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     public void testDB(){
-        Activity test=new Activity(1,"Schwimmen",10,5,"01.12.2016",183,"01:00");
-        Activity test2=new Activity(2,"Radln",40,0,"02.12.2016",40,"02:01");
-        Activity test3=new Activity(2,"Radln",10,4,"02.12.2016",90,"02:01");
-        activityDataAccess.addNewActivity(test);
-        activityDataAccess.addNewActivity(test2);
-        activityDataAccess.addNewActivity(test3);
+        addActivity();
         getAllActivitiesOfDay();
 
     }
 
+    public void addActivity(){
+        Intent i = new Intent(this, AddActivityActivity.class);
+        startActivity(i);
+        //TODO Activity Übergabeparamter einlesen
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String date = sdf.format(new Date());
+        Activity a=new Activity(1,"Test",100,5,date,200,"01:00");
+        activityDataAccess.NewActivity(a);
+    }
+
     public List<String> getAllActivitiesOfDay(){
+        //TODO Datum als Input
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String date = sdf.format(new Date());
+
         sumActPerDay=0;
         sumAmountExPerDay=0;
         sumCalPerDay=0;
         sumDistPerDay=0;
         List<String> act_list=new ArrayList<String>();
-        for(Activity a : activityDataAccess.getAllActivitiesPerDay("02.12.2016")){
+        for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)){
             act_list.add(a.toString());
             sumCalPerDay=sumCalPerDay+a.getCalories();
             sumDistPerDay=sumDistPerDay+a.getDistance();
