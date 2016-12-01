@@ -133,6 +133,19 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+
+    public void addActivity(){
+        Intent i = new Intent(this, AddActivityActivity.class);
+        startActivity(i);
+        //TODO Activity Übergabeparamter einlesen
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String date = sdf.format(new Date());
+        Activity a=new Activity(1,"Test",100,5,date,200,"01:00");
+        //activityDataAccess.NewActivity(a);
+    }
+
+
     public List<String> getAllActivitiesOfDay(){
         //TODO Datum als Input
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");

@@ -6,4 +6,35 @@
 
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_add_activity">Aktivität hinzufügen</string>
+    <string name="activityType">Aktivität: </string>
+
+    <string-array name="activityTypes">
+        <item>Treadmill</item>
+        <item>Cross Trainer</item>
+        <item>Stair-Master</item>
+        <item>Ergometer</item>
+        <item>Spinning Bike</item>
+        <item>Rowing machine</item>
+        <item>Push-Ups</item>
+        <item>Sit-Ups</item>
+        <item>Squats</item>
+        <item>Pull-Ups</item>
+        <item>Burpees</item>
+    </string-array>
+
+    <string name="activityAmountKcal">0</string>
+    <string name="activityKcal">Kcal</string>
+    <!-- <string name="activityAmountMinutes">set Time</string>
+    <string name="activityMinutes">00:00</string>-->
+    <string name="activityAmountMinutes">HH:MM</string>
+    <string name="activityMinutes">Zeit</string>
+    <string name="activityAmountAmount">0</string>
+    <string name="activityAmount">Anzahl</string>
+    <string name="activityAmountKm">0</string>
+    <string name="activityKm">km</string>
+
+
+    <string name="activitySaveBtn">OK</string>
+
+
 </resources>
