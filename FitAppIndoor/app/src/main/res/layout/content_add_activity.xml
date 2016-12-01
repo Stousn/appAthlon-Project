@@ -80,6 +80,7 @@
 
     <Button
         android:layout_width="96dp"
+        android:id="@+id/activitySave"
         android:layout_height="wrap_content"
         android:text="@string/activitySaveBtn"
         android:layout_below="@+id/activityAmountAmount"

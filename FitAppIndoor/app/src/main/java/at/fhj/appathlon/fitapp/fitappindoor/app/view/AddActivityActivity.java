@@ -1,5 +1,6 @@
 package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.io.Console;
@@ -25,6 +28,10 @@ public class AddActivityActivity extends AppCompatActivity {
     private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
     private Spinner spiSportType;
     private String sportType;
+    private EditText edtCal,edtMin,edtAmo;
+    private Button butSave;
+    private String amountMin;
+    private int amountCal,amountEx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,11 @@ public class AddActivityActivity extends AppCompatActivity {
             }
         });
 
+        edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
+        edtCal=(EditText) findViewById(R.id.activityAmountKcal);
+        edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
+        butSave=(Button) findViewById(R.id.activitySave);
+
         activityDataAccess=new ActivityDataAccess(this);
 
         spiSportType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -58,16 +70,35 @@ public class AddActivityActivity extends AppCompatActivity {
 
             }
         });
+        butSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sportType != null){
+                    amountCal=Integer.parseInt(edtCal.getText().toString());
+                    amountEx=Integer.parseInt(edtAmo.getText().toString());
+                    amountMin=edtMin.getText().toString();
+                    addActivity();
+                }
+
+                showEntries();
+
+            }
+        });
 
         }
-
 
     public void addActivity(){
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        Activity a=new Activity(1,sportType,100,5,date,200,"01:00");
+
+        Activity a=new Activity(1,sportType,100,amountEx,date,amountCal,amountMin);
         activityDataAccess.addNewActivity(a);
+    }
+
+    private void showEntries(){
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 
 }

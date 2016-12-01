@@ -157,8 +157,8 @@ public class MainActivity extends AppCompatActivity
         Log.i("DISTANZ: ",sumDistPerDay+"");
         Log.i("EXERCISES: ",sumAmountExPerDay+"");
         Log.i("ACTIVITIES: ",sumActPerDay+"");
-      /*txtCal.setText(sumCalPerDay);
-        txtAmAct.setText(sumActPerDay); */
+        txtCal.setText(sumCalPerDay+"");
+        txtAmAct.setText(sumActPerDay+"");
         return act_list;
     }
 
