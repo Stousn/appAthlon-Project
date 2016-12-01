@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                getActivity();
             }
         });
 
@@ -159,5 +160,10 @@ public class MainActivity extends AppCompatActivity
       /*txtCal.setText(sumCalPerDay);
         txtAmAct.setText(sumActPerDay); */
         return act_list;
+    }
+
+    public void getActivity() {
+        Intent i = new Intent(this, AddActivityActivity.class);
+        startActivity(i);
     }
 }
