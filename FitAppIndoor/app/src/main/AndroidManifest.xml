@@ -20,10 +20,12 @@
         </activity>
 
         <activity android:name=".app.view.Statistics"
-            android:label="Statistics">
+            android:label="Statistics"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".app.view.WeightLog"
-            android:label="Weight Log">
+            android:label="Weight Log"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
