@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
         txtDate.setText(date);
 
         sumActPerDay=0;
-        sumAmountExPerDay=0;gi
+        sumAmountExPerDay=0;
         sumCalPerDay=0;
         sumDistPerDay=0;
         List<String> act_list=new ArrayList<String>();
