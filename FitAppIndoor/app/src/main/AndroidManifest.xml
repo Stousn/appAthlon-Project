@@ -18,13 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".app.view.Statistics"
-            android:label="Statistics">
-        </activity>
-        <activity android:name=".app.view.WeightLog"
-            android:label="Weight Log">
-        </activity>
+        <activity
+            android:name=".app.view.Statistics"
+            android:label="Statistics"></activity>
+        <activity
+            android:name=".app.view.WeightLog"
+            android:label="Weight Log"></activity>
+        <activity
+            android:name=".app.view.AddActivityActivity"
+            android:label="@string/title_activity_add_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
