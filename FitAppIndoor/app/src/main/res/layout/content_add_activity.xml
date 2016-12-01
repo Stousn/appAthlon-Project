@@ -35,13 +35,17 @@
 
     <!--Amount-->
 
+    <!--<Button-->
     <EditText
         android:id="@+id/activityAmountMinutes"
         android:text="@string/activityAmountMinutes"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activityAmountKcal"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        />
+        <!--android:onClick="showTimePickerDialog"-->
+
 
     <EditText
         android:id="@+id/activityAmountAmount"
@@ -78,12 +82,30 @@
         android:layout_alignBottom="@+id/activityAmountMinutes"
         android:layout_toEndOf="@+id/activityAmountMinutes" />
 
+    <EditText
+        android:id="@+id/activityAmountKm"
+        android:text="@string/activityAmountKm"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activityAmountAmount"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/activityKm"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activityKm"
+        android:layout_alignBaseline="@+id/activityAmountKm"
+        android:layout_alignBottom="@+id/activityAmountKm"
+        android:layout_toEndOf="@+id/activityAmountKm" />
+
     <Button
+        android:id="@+id/activitySave"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:text="@string/activitySaveBtn"
-        android:layout_below="@+id/activityAmountAmount"
-        android:layout_alignEnd="@+id/activityAmount" />
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/activityKm" />
 
 
 </RelativeLayout>
