@@ -31,12 +31,9 @@
     <string name="activityMinutes">Time</string>
     <string name="activityAmountAmount">0</string>
     <string name="activityAmount">amount</string>
+    <string name="activityAmountKm">0</string>
+    <string name="activityKm">km</string>
 
-    <string-array name="activityAmountSI">
-        <item>kcal</item>
-        <item>minutes</item>
-        <item>amount</item>
-    </string-array>
 
     <string name="activitySaveBtn">Save</string>
 </resources>
