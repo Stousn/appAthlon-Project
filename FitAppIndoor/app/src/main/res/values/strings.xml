@@ -23,7 +23,12 @@
         <item>Burpees</item>
     </string-array>
 
-    <string name="activityAmount">0</string>
+    <string name="activityAmountKcal">0</string>
+    <string name="activityKcal">Kcal</string>
+    <string name="activityAmountMinutes">0</string>
+    <string name="activityMinutes">Minutes</string>
+    <string name="activityAmountAmount">0</string>
+    <string name="activityAmount">amount</string>
 
     <string-array name="activityAmountSI">
         <item>kcal</item>

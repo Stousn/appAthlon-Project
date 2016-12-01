@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                addActivity();
             }
         });
 
@@ -131,10 +130,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void addActivity() {
-        Intent i = new Intent(this, AddActivityActivity.class);
-        startActivity(i);
-    }
 
 
     public List<String> getAllActivitiesOfDay(){
