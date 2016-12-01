@@ -13,4 +13,36 @@
     tools:context="at.fhj.appathlon.fitapp.fitappindoor.app.view.AddActivityActivity"
     tools:showIn="@layout/activity_add_activity">
 
+    <Spinner
+        android:id="@+id/activityType_spinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/activityTypes"
+        />
+
+    <EditText
+        android:id="@+id/activityAmount"
+        android:text="@string/activityAmount"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityType_spinner"
+        android:layout_alignParentLeft="true" />
+
+    <Spinner
+        android:id="@+id/activityAmountSI"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/activityAmountSI"
+        android:layout_below="@+id/activityType_spinner"
+        android:layout_toEndOf="@+id/activityAmount"
+        android:layout_alignBottom="@+id/activityAmount" />
+
+    <Button
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activitySaveBtn"
+        android:layout_below="@+id/activityAmount"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>
