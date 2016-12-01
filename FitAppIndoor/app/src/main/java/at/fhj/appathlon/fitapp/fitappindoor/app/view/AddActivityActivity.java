@@ -1,6 +1,8 @@
 package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
 import android.content.Intent;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,10 +18,12 @@ import android.widget.Spinner;
 import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import at.fhj.appathlon.fitapp.fitappindoor.R;
+import at.fhj.appathlon.fitapp.fitappindoor.app.helper.TimePickerFragment;
 import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
 import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
@@ -99,6 +103,14 @@ public class AddActivityActivity extends AppCompatActivity {
     private void showEntries(){
         Intent i=new Intent(this,MainActivity.class);
         startActivity(i);
+    }
+
+
+    public void showTimePickerDialog(View v) {
+
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(),"TimePicker");
+
     }
 
 }
