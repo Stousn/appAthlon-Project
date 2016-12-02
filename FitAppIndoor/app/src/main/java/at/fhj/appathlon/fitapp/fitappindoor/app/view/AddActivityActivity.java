@@ -1,11 +1,13 @@
 package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -77,6 +79,8 @@ public class AddActivityActivity extends AppCompatActivity {
                         amountDist = Integer.parseInt(edtDist.getText().toString());
                         addActivity();
                     } catch (Exception e) {
+                        Toast.makeText(AddActivityActivity.this,
+                                "No element was added because of an invalid input", Toast.LENGTH_LONG).show();
                         Log.e("ERROR", e.toString());
                     }
                 }
