@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity
             sportTypeTV.setText(activity.getSportType());
             sportTypeTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             sportTypeTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            sportTypeTV.setTextColor(Color.DKGRAY);
+            sportTypeTV.setTextColor(Color.rgb(2, 136, 209));
             tr.addView(sportTypeTV);
 
             // Duration
