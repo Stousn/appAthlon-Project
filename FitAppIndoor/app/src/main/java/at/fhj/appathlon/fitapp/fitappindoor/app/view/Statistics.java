@@ -3,7 +3,9 @@ package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -52,14 +54,6 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                getActivity();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -128,9 +122,25 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
 
         } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_share) {
+            startActivity(
+                    new Intent(Settings.ACTION_SETTINGS));
+        }
+        else if (id == R.id.nav_share) {
+            String url = "https://www.facebook.com/fitappofficial";
+            Intent intent;
+            try {
+                getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=" + url));
+            } catch (Exception e) {
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            }
+
+            startActivity(intent);
 
         } else if (id == R.id.nav_feeback) {
+
+            Intent i=new Intent(this,Mail.class);
+            startActivity(i);
 
         }
 

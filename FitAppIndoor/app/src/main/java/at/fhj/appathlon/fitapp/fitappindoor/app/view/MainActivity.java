@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            startActivity(
+                    new Intent(Settings.ACTION_SETTINGS));
         }
 
         return super.onOptionsItemSelected(item);
@@ -139,7 +140,11 @@ public class MainActivity extends AppCompatActivity
             }
 
             startActivity(intent);
+
         } else if (id == R.id.nav_feeback) {
+
+            Intent i=new Intent(this,Mail.class);
+            startActivity(i);
 
         }
 

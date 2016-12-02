@@ -91,7 +91,7 @@ public class AddActivityActivity extends AppCompatActivity {
         Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
         if (a.getCalories() == 0) {
-        //    a = calcActivityCal(a);
+            a = calcActivityCal(a);
         }
         activityDataAccess.addNewActivity(a);
     }
@@ -109,20 +109,20 @@ public class AddActivityActivity extends AppCompatActivity {
 
     }
 
-    public int calcCal(int heartRate, String timeStr) {
+    public int calcCal(int heartRate, int timeStr) {
         //Time in Minutes
-        timeStr = "25";
+       // timeStr = 25;
         int age = 25;
         int weight = 60;
         boolean isWoman = true;
         if (!isWoman) {
-            return (int) (((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * Integer.parseInt(timeStr) / 4.184);
+            return (int) (((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * timeStr / 4.184);
         } else {
-            return (int) (((age * 0.074) - (weight * 0.05741) + (heartRate * 0.4472) - 20.4022) * Integer.parseInt(timeStr) / 4.184);
+            return (int) (((age * 0.074) - (weight * 0.05741) + (heartRate * 0.4472) - 20.4022) * timeStr / 4.184);
         }
 
     }
- /*   public Activity calcActivityCal(Activity a){
+    public Activity calcActivityCal(Activity a){
         int heartRate;
         switch(a.getSportType()) {
             case "Treadmill":
@@ -172,5 +172,5 @@ public class AddActivityActivity extends AppCompatActivity {
                 break;
         }
         return a;
-    }*/
+    }
 }
