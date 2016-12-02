@@ -27,8 +27,8 @@
     <string name="activityKcal">Kcal</string>
     <!-- <string name="activityAmountMinutes">set Time</string>
     <string name="activityMinutes">00:00</string>-->
-    <string name="activityAmountMinutes">HH:MM</string>
-    <string name="activityMinutes">Zeit</string>
+    <string name="activityAmountMinutes">0</string>
+    <string name="activityMinutes">Minuten</string>
     <string name="activityAmountAmount">0</string>
     <string name="activityAmount">Anzahl</string>
     <string name="activityAmountKm">0</string>

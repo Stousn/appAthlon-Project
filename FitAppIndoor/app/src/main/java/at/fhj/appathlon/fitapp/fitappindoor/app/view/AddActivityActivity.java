@@ -44,15 +44,6 @@ public class AddActivityActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         spiSportType = (Spinner) findViewById(R.id.activityType_spinner);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
         edtCal=(EditText) findViewById(R.id.activityAmountKcal);
         edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
@@ -96,7 +87,6 @@ public class AddActivityActivity extends AppCompatActivity {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        Log.i("MINUTES",amountMin+"");
         
         Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
