@@ -13,127 +13,186 @@
     tools:context="at.fhj.appathlon.fitapp.fitappindoor.app.view.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-
-    <TextView
-        android:text=""
-        android:layout_width="wrap_content"
-        android:textSize="30dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDate"
-        android:layout_alignEnd="@+id/txtDate"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/txtCal" />
-
-    <TextView
-        android:text="Calories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/txtCalorien"
-        android:layout_below="@+id/txtCal" />
-
-    <TextView
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCalorien"
-        android:layout_alignParentStart="true"
-        android:textSize="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/txtAmAct" />
-
-
-    <TextView
-        android:text="Activities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/txtActivi"
-        android:layout_below="@+id/txtAmAct" />
-
-    <TextView
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCalorien"
-        android:layout_alignParentStart="true"
-        android:textSize="24dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/txtDist" />
-
-    <TextView
-        android:text="Distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/txtDistance"
-        android:layout_below="@+id/txtDist" />
-
-    <TextView
-        android:text="727"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCalorien"
-        android:layout_alignParentStart="true"
-        android:textSize="24dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/txtExec" />
-
-    <TextView
-        android:text="Executions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/txtExecution"
-        android:layout_below="@+id/txtDist" />
-
-    <TextView
-        android:text="727"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCalorien"
-        android:layout_alignParentStart="true"
-        android:textSize="24dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/txtDurat" />
-
-    <TextView
-        android:text="Duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/txtDuration"
-        android:layout_below="@+id/txtDist" />
-
-
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginTop="41dp"
-        android:id="@+id/txtDate"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
     <View
         android:layout_width="fill_parent"
         android:layout_marginTop="10dp"
         android:layout_height="2dp"
-        android:background="#000000" />
+        android:background="#000000"
+        android:id="@+id/view" />
+
+    <LinearLayout
+        android:layout_below="@+id/view"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Datum"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:id="@+id/txtDate"
+            android:textSize="30sp"
+            android:textColor="@android:color/background_dark"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/>
+
+        <LinearLayout
+            android:id="@+id/calorie_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="calories"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtCal"
+                android:textSize="25sp"
+                android:textColor="@android:color/background_dark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Calorie_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
 
-<<<<<<< HEAD
-=======
+            <TextView
+                android:text="Calories (kcal)"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtCalorien"
+                android:textSize="15sp" />
 
->>>>>>> 2d7de01e6f903dcbe9df2ffe0a57d77592c99f7a
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/>
+
+        <LinearLayout
+            android:id="@+id/value_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="activities"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/txtAmAct"
+                android:fontFamily="sans-serif"
+                android:textColor="@android:color/background_dark" />
+
+            <TextView
+                android:text="distance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/txtDist"
+                android:textColor="@android:color/background_dark"/>
+
+
+            <TextView
+                android:text="727"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtExec"
+                android:textSize="20sp"
+                android:textColor="@android:color/background_dark"/>
+
+            <TextView
+                android:text="727"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/txtDurat"
+                android:textColor="@android:color/background_dark"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/value_container"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:text="Activities"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtActivi"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="Distance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDistance"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="Executions"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtExecValue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="Duration"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDuration"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+
+
+
+
 </RelativeLayout>
