@@ -45,15 +45,6 @@ public class AddActivityActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         spiSportType = (Spinner) findViewById(R.id.activityType_spinner);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
         edtCal=(EditText) findViewById(R.id.activityAmountKcal);
         edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
