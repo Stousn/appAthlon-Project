@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public List<String> getAllActivitiesOfDay(){
-        //TODO Datum als Input
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
 

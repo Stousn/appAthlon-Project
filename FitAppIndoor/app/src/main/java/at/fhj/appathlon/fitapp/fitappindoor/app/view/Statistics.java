@@ -15,10 +15,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -75,6 +79,7 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         llChart=(LinearLayout) findViewById(R.id.chartDuration);
         activityDataAccess=new ActivityDataAccess(this);
         drawdiagramm();
+        setWorkoutOfDay();
     }
 
     @Override
@@ -187,10 +192,10 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)) {
             Log.i("STATICTIC_ACT",a.getDurationPerActivity()+"");
             series.add(hour++,a.getCalories());
-            series.setTitle(a.getSportType());
             disciplins.add(a.getSportType());
 
         }
+        series.setTitle("Calories per Activity");
         dataset.addSeries(series);
         XYSeriesRenderer renderer=new XYSeriesRenderer();
 
@@ -231,4 +236,79 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         llChart.addView(chartView,0);
     }
 
-}
+    private void setWorkoutOfDay() {
+        ActivityDataAccess adao = new ActivityDataAccess(this.getApplicationContext());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
+        List<Activity> al = new ArrayList<Activity>();
+
+        al = adao.getAllActivitiesPerDay(sdf.format(new Date()));
+
+        /* Find Tablelayout defined in main.xml */
+        TableLayout tl = (TableLayout) findViewById(R.id.detail_day);
+
+        for (Activity activity : al) {
+            Log.i("ACTIVITY", activity.toString());
+            /* Create a new row to be added. */
+            TableRow trLine = new TableRow(this);
+            trLine.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            View line = new View(this);
+
+            line.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 2));
+            line.setBackgroundColor(Color.DKGRAY);
+            tl.addView(line);
+
+            TableRow trSpace = new TableRow(this);
+            trSpace.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            View space = new View(this);
+
+            space.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 15));
+            tl.addView(space);
+
+
+            TableRow tr = new TableRow(this);
+            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            // Activity Name
+            TextView sportTypeTV = new TextView(this);
+            sportTypeTV.setText(activity.getSportType());
+            sportTypeTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            sportTypeTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            sportTypeTV.setTextColor(Color.DKGRAY);
+            tr.addView(sportTypeTV);
+
+            // Duration
+            TextView durationTV = new TextView(this);
+            durationTV.setText("Duration: " + activity.getDurationPerActivity());
+            //if(activity.getDuration() == null){
+            //    durationTV.setText("Durartion: " + "0");
+            //}
+            durationTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tr.addView(durationTV);
+
+
+            // KCAL
+            TextView calTV = new TextView(this);
+            calTV.setText(activity.getCalories() + " kcal");
+            calTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            calTV.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            tr.addView(calTV);
+
+            //Space 2
+            TableRow trSpace2 = new TableRow(this);
+            trSpace2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            View space2 = new View(this);
+
+            space2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 20));
+            tl.addView(space2);
+
+
+            /* Add row to TableLayout. */
+            //tr.setBackgroundResource(R.drawable.sf_gradient_03);
+            tl.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+        }
+
+    }
+
+    }
