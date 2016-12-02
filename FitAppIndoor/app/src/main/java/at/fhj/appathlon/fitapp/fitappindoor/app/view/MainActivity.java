@@ -129,6 +129,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_settings) {
+            startActivity(
+                    new Intent(Settings.ACTION_SETTINGS));
 
         } else if (id == R.id.nav_share) {
             String url = "https://www.facebook.com/fitappofficial";
