@@ -2,6 +2,7 @@ package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -128,7 +129,16 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_share) {
+            String url = "https://www.facebook.com/fitappofficial";
+            Intent intent;
+            try {
+                getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=" + url));
+            } catch (Exception e) {
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            }
 
+            startActivity(intent);
         } else if (id == R.id.nav_feeback) {
 
         }
