@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity
 
             // Duration
             TextView durationTV = new TextView(this);
-            durationTV.setText("Duration: "+ activity.getDuration());
+            durationTV.setText("Duration: "+ activity.getDurationPerActivity());
             //if(activity.getDuration() == null){
             //    durationTV.setText("Durartion: " + "0");
             //}

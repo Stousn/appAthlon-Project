@@ -31,7 +31,14 @@ public class WeightLog extends AppCompatActivity implements NavigationView.OnNav
         //setSupportActionBar(toolbar);
         getSupportActionBar();
 
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                getActivity();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -121,5 +128,10 @@ public class WeightLog extends AppCompatActivity implements NavigationView.OnNav
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void getActivity() {
+        Intent i = new Intent(this, AddActivityActivity.class);
+        startActivity(i);
     }
 }

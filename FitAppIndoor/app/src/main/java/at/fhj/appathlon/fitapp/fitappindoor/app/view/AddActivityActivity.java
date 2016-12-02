@@ -128,47 +128,47 @@ public class AddActivityActivity extends AppCompatActivity {
             case "Treadmill":
                 //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Cross Trainer":
                 //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Stair-Master":
                 //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Ergometer":
                 //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Push-Ups":
                 //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Sit-Ups":
                 //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Squats":
                 //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Pull-Ups":
                 //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Burpees":
                 //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDuration()));
+                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
         }
         return a;
