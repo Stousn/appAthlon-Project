@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ActivityDataAccess activityDataAccess;
     private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
-    private TextView txtDate,txtCal,txtAmAct;
+    private TextView txtDate,txtCal,txtAmAct,txtDist,txtExec,txtDura;
 
 
     @Override
@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity
         txtAmAct= (TextView) findViewById(R.id.txtAmAct);
         txtCal=(TextView) findViewById(R.id.txtCal);
         txtDate=(TextView) findViewById(R.id.txtDate);
+        txtDist=(TextView) findViewById(R.id.txtDist);
+        txtExec=(TextView) findViewById(R.id.txtExec);
+        txtDura=(TextView) findViewById(R.id.txtDurat);
 
         activityDataAccess=new ActivityDataAccess(this);
         getAllActivitiesOfDay();
@@ -172,6 +175,8 @@ public class MainActivity extends AppCompatActivity
         Log.i("ACTIVITIES: ",sumActPerDay+"");
         txtCal.setText(sumCalPerDay+"");
         txtAmAct.setText(sumActPerDay+"");
+        txtDist.setText(sumDistPerDay+"");
+        txtExec.setText(sumAmountExPerDay+"");
         return act_list;
     }
 
