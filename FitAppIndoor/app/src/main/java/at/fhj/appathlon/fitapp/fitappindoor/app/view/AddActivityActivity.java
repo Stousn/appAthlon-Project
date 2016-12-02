@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.Console;
 import java.text.SimpleDateFormat;
@@ -69,11 +70,15 @@ public class AddActivityActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(sportType != null){
-                    amountCal=Integer.parseInt(edtCal.getText().toString());
-                    amountEx=Integer.parseInt(edtAmo.getText().toString());
-                    amountMin=Integer.parseInt(edtMin.getText().toString());
-                    amountDist=Integer.parseInt( edtDist.getText().toString());
-                    addActivity();
+                    try {
+                        amountCal = Integer.parseInt(edtCal.getText().toString());
+                        amountEx = Integer.parseInt(edtAmo.getText().toString());
+                        amountMin = Integer.parseInt(edtMin.getText().toString());
+                        amountDist = Integer.parseInt(edtDist.getText().toString());
+                        addActivity();
+                    } catch (Exception e) {
+                        Log.e("ERROR", e.toString());
+                    }
                 }
 
                 showEntries();
