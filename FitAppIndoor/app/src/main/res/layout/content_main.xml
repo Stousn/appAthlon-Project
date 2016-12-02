@@ -45,6 +45,7 @@
         android:layout_marginTop="17dp"
         android:id="@+id/txtAmAct" />
 
+
     <TextView
         android:text="Activities"
         android:layout_width="wrap_content"
@@ -131,4 +132,8 @@
         android:background="#000000" />
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d7de01e6f903dcbe9df2ffe0a57d77592c99f7a
 </RelativeLayout>

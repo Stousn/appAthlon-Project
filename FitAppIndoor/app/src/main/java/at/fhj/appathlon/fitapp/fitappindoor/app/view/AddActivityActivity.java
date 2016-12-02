@@ -87,7 +87,7 @@ public class AddActivityActivity extends AppCompatActivity {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        
+
         Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
         if (a.getCalories() == 0) {

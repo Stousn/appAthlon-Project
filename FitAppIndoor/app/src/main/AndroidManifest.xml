@@ -24,10 +24,6 @@
             android:name=".app.view.Statistics"
             android:label="Statistics"
             android:theme="@style/AppTheme.NoActionBar">
-<<<<<<< HEAD
-
-=======
->>>>>>> 405eda527f9718f0159ee38bc1399ca821ac87ed
         </activity>
 
         <activity android:name=".app.view.WeightLog"
