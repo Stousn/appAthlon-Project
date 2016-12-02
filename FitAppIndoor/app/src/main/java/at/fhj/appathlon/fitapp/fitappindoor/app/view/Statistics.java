@@ -1,6 +1,7 @@
 package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,7 +15,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.achartengine.model.XYSeries;
+import org.achartengine.renderer.XYSeriesRenderer;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import at.fhj.appathlon.fitapp.fitappindoor.R;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
+import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
 /**
  * Created by vicky on 01.12.2016.
@@ -22,6 +33,7 @@ import at.fhj.appathlon.fitapp.fitappindoor.R;
 
 public class Statistics extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ActivityDataAccess activityDataAccess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +58,8 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        activityDataAccess=new ActivityDataAccess(this);
     }
 
     @Override
@@ -116,4 +130,21 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         Intent i = new Intent(this, AddActivityActivity.class);
         startActivity(i);
     }
+
+    public void drawdiagramm(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String date = sdf.format(new Date());
+        XYSeries series = new XYSeries("Activity today");
+
+        int hour=0;
+
+        List<String> act_list=new ArrayList<String>();
+        for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)) {
+            series.add(hour++,a.getDurationPerActivity());
+        }
+        XYSeriesRenderer renderer=new XYSeriesRenderer();
+        renderer.setLineWidth(2);
+        //renderer.setColor(Color.);
+    }
+
 }
