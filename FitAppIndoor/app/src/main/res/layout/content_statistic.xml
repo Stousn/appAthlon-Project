@@ -14,8 +14,19 @@
     tools:showIn="@layout/activity_statistics">
 
     <TextView
-        android:text="TextView"
+        android:text="Statistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="40dp" />
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/chartDuration">
+    </LinearLayout>
 </LinearLayout>
