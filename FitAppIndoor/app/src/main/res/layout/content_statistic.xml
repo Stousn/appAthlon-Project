@@ -25,8 +25,13 @@
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:id="@+id/chartDuration">
     </LinearLayout>
+
+    <TableLayout android:id="@+id/detail_day"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:padding="10dip" android:stretchColumns="*" android:layout_below="@id/txtDuration">
+    </TableLayout>
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -169,7 +170,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public List<String> getAllActivitiesOfDay(){
-        //TODO Datum als Input
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
 
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity
 
             // Duration
             TextView durationTV = new TextView(this);
-            durationTV.setText("Duration: "+ activity.getDuration());
+            durationTV.setText("Duration: "+ activity.getDurationPerActivity());
             //if(activity.getDuration() == null){
             //    durationTV.setText("Durartion: " + "0");
             //}
