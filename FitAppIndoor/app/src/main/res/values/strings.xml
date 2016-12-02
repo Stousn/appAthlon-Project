@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">FitAppIndoor</string>
+    <string name="app_name">FITAPP Indoor</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_activity">Add Activity</string>
+    <string name="lableWeightLog">Weight Log</string>
 
     <string name="activityType">Activity: </string>
 
@@ -27,8 +28,8 @@
     <string name="activityKcal">Kcal</string>
     <!-- <string name="activityAmountMinutes">set Time</string>
     <string name="activityMinutes">00:00</string>-->
-    <string name="activityAmountMinutes">HH:MM</string>
-    <string name="activityMinutes">Time</string>
+    <string name="activityAmountMinutes">0</string>
+    <string name="activityMinutes">minutes</string>
     <string name="activityAmountAmount">0</string>
     <string name="activityAmount">amount</string>
     <string name="activityAmountKm">0</string>

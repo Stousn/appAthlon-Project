@@ -33,8 +33,8 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                getActivity();
             }
         });
 
@@ -110,5 +110,10 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void getActivity() {
+        Intent i = new Intent(this, AddActivityActivity.class);
+        startActivity(i);
     }
 }
