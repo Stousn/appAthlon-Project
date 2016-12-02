@@ -34,7 +34,7 @@ public class ActivityDataAccess {
         values.put(ActivityDBHelper.AMOUNT_P_E,activity.getAmountPerExercise());
         values.put(ActivityDBHelper.DATE_EXERC,activity.getDate());
         values.put(ActivityDBHelper.CALOR,activity.getCalories());
-        values.put(ActivityDBHelper.DURATION,activity.getDuration());
+        values.put(ActivityDBHelper.DURATION,activity.getDurationPerActivity());
 
         database.insert(ActivityDBHelper.TABLE_NAME,null,values);
 
@@ -56,7 +56,7 @@ public class ActivityDataAccess {
                 tmpActivity.setDistance(act_Cursor.getInt(2));
                 tmpActivity.setAmountPerExercise(act_Cursor.getInt(3));
                 tmpActivity.setDate(act_Cursor.getString(4));
-                tmpActivity.setDuration(act_Cursor.getString(5));
+                tmpActivity.setDurationPerActivity(act_Cursor.getInt(5));
                 tmpActivity.setCalories(act_Cursor.getInt(6));
                 activityList.add(tmpActivity);
             }while(act_Cursor.moveToNext());
@@ -80,7 +80,7 @@ public class ActivityDataAccess {
                 tmpActivity.setDistance(cursor.getInt(1));
                 tmpActivity.setAmountPerExercise(cursor.getInt(2));
                 tmpActivity.setDate(cursor.getString(3));
-                tmpActivity.setDuration(cursor.getString(4));
+                tmpActivity.setDurationPerActivity(cursor.getInt(4));
                 tmpActivity.setCalories(cursor.getInt(5));
                 listA.add(tmpActivity);
             } while (cursor.moveToNext());

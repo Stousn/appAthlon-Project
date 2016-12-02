@@ -34,8 +34,7 @@ public class AddActivityActivity extends AppCompatActivity {
     private String sportType;
     private EditText edtCal,edtMin,edtAmo,edtDist;
     private Button butSave;
-    private String amountMin;
-    private int amountCal,amountEx,amountDist;
+    private int amountCal,amountEx,amountDist,amountMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 if(sportType != null){
                     amountCal=Integer.parseInt(edtCal.getText().toString());
                     amountEx=Integer.parseInt(edtAmo.getText().toString());
-                    amountMin=edtMin.getText().toString();
+                    amountMin=Integer.parseInt(edtMin.getText().toString());
                     amountDist=Integer.parseInt( edtDist.getText().toString());
                     addActivity();
                 }
@@ -88,12 +87,11 @@ public class AddActivityActivity extends AppCompatActivity {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        Log.i("DATE",date);
 
         Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
         if (a.getCalories() == 0) {
-            a = calcActivityCal(a);
+        //    a = calcActivityCal(a);
         }
         activityDataAccess.addNewActivity(a);
     }
@@ -124,7 +122,7 @@ public class AddActivityActivity extends AppCompatActivity {
         }
 
     }
-    public Activity calcActivityCal(Activity a){
+ /*   public Activity calcActivityCal(Activity a){
         int heartRate;
         switch(a.getSportType()) {
             case "Treadmill":
@@ -174,5 +172,5 @@ public class AddActivityActivity extends AppCompatActivity {
                 break;
         }
         return a;
-    }
+    }*/
 }

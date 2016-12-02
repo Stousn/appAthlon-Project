@@ -22,7 +22,7 @@ public class ActivityDBHelper extends SQLiteOpenHelper {
             DISTANCE+" integer," +
             AMOUNT_P_E+" integer," +
             DATE_EXERC+" date," +
-            DURATION+" datetime," +
+            DURATION+" int," +
             CALOR+" integer)";
 
     private static final String DELETE_VALUES="DELETE FROM "+TABLE_NAME;
