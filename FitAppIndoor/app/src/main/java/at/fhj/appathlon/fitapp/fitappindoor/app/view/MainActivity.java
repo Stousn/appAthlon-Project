@@ -30,7 +30,7 @@ import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ActivityDataAccess activityDataAccess;
-    private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
+    private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay, sumMinutes,sumHours;
     private TextView txtDate,txtCal,txtAmAct,txtDist,txtExec,txtDura;
 
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
 
         activityDataAccess=new ActivityDataAccess(this);
         getAllActivitiesOfDay();
-     //   activityDataAccess.deleteData();
+       // activityDataAccess.deleteData();
 
     }
 
@@ -139,15 +139,15 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    public void addActivity(){
+  /*  public void addActivity(){
         Intent i = new Intent(this, AddActivityActivity.class);
         startActivity(i);
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        Activity a=new Activity(1,"Test",100,5,date,200,"01:00");
+    //    Activity a=new Activity(1,"Test",100,5,date,200,"01:00");
         //activityDataAccess.NewActivity(a);
-    }
+    }*/
 
 
     public List<String> getAllActivitiesOfDay(){
@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity
             sumCalPerDay = sumCalPerDay + a.getCalories();
             sumDistPerDay = sumDistPerDay + a.getDistance();
             sumAmountExPerDay = sumAmountExPerDay + a.getAmountPerExercise();
+            sumMinutes=sumMinutes+a.getDurationPerActivity();
             sumActPerDay++;
             Log.i("DATA: ", a.toString() + "!!!!!!!!!!!!");
         }
@@ -178,6 +179,9 @@ public class MainActivity extends AppCompatActivity
         txtAmAct.setText(sumActPerDay+"");
         txtDist.setText(sumDistPerDay+"");
         txtExec.setText(sumAmountExPerDay+"");
+        sumHours=sumMinutes/60;
+        sumMinutes=sumMinutes%60;
+        txtDura.setText(sumHours+":"+sumMinutes);
         return act_list;
     }
 

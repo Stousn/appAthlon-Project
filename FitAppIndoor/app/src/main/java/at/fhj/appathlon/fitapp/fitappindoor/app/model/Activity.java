@@ -10,11 +10,10 @@ import java.sql.Time;
 public class Activity {
     private String sportType;
     private int id,distance, calories;
-    private int amountPerExercise, amountActivities;
-    private String duration, durationPerActivity;
+    private int amountPerExercise, amountActivities,durationPerActivity,duration;
     private String date;
 
-    public Activity(int id,String sportType, int distance, int amountPerExercise,String date, int calories, String duration_p_A ){
+    public Activity(int id,String sportType, int distance, int amountPerExercise,String date, int calories, int duration_p_A ){
         this.id=id;
         this.sportType=sportType;
         this.distance=distance;
@@ -67,22 +66,6 @@ public class Activity {
         this.amountActivities = amountActivities;
     }
 
-    public String getDurationPerActivity() {
-        return durationPerActivity;
-    }
-
-    public void setDurationPerActivity(String durationPerActivity) {
-        this.durationPerActivity = durationPerActivity;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
     public String getDate() {
         return date;
     }
@@ -100,6 +83,22 @@ public class Activity {
     }
 
     public  String toString(){
-        return "Sport Art " +sportType+"; Distanz "+distance+"; Kalorien "+calories+"; Anzahl/Uebung "+amountPerExercise+"; Anzahl/Tag "+amountActivities+"; Dauer "+duration+"; Dauer/Act. "+durationPerActivity+"; Datum "+date;
+        return "Sport Art " +sportType+"; Distanz "+distance+"; Kalorien "+calories+"; Anzahl/Uebung "+amountPerExercise+"; Anzahl/Tag "+amountActivities+";  Dauer/Act. "+durationPerActivity+"; Datum "+date;
+    }
+
+    public int getDurationPerActivity() {
+        return durationPerActivity;
+    }
+
+    public void setDurationPerActivity(int durationPerActivity) {
+        this.durationPerActivity = durationPerActivity;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
