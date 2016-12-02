@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
 
         activityDataAccess=new ActivityDataAccess(this);
         getAllActivitiesOfDay();
+     //   activityDataAccess.deleteData();
 
     }
 

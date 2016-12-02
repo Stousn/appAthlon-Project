@@ -87,4 +87,10 @@ public class ActivityDataAccess {
         }
         return listA;
     }
+
+    public void deleteData(){
+        database = dbHelper.getWritableDatabase();
+        dbHelper.deleteValues(database);
+        database.close();
+    }
 }
