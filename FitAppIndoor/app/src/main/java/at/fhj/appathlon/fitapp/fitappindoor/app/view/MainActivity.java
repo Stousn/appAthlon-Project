@@ -144,7 +144,11 @@ public class MainActivity extends AppCompatActivity
             }
 
             startActivity(intent);
+
         } else if (id == R.id.nav_feeback) {
+
+            Intent i=new Intent(this,Mail.class);
+            startActivity(i);
 
         }
 

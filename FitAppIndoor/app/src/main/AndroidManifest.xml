@@ -26,12 +26,17 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".app.view.WeightLog"
+        <activity
+            android:name=".app.view.WeightLog"
             android:label="@string/lableWeightLog"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-
+        <activity
+            android:name=".app.view.Mail"
+            android:label="Mail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".app.view.AddActivityActivity"
             android:label="@string/title_activity_add_activity"
