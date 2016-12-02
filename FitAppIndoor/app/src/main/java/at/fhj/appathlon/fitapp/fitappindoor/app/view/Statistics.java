@@ -2,6 +2,7 @@ package at.fhj.appathlon.fitapp.fitappindoor.app.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -11,13 +12,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import org.achartengine.ChartFactory;
+import org.achartengine.GraphicalView;
+import org.achartengine.chart.BarChart;
+import org.achartengine.chart.PointStyle;
+import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
+import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +44,7 @@ import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 public class Statistics extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityDataAccess activityDataAccess;
+    private LinearLayout llChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +70,9 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        llChart=(LinearLayout) findViewById(R.id.chartDuration);
         activityDataAccess=new ActivityDataAccess(this);
+        drawdiagramm();
     }
 
     @Override
@@ -134,17 +147,70 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
     public void drawdiagramm(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-        XYSeries series = new XYSeries("Activity today");
+        XYSeries series = new XYSeries("Activities today");
+        XYMultipleSeriesDataset dataset=new XYMultipleSeriesDataset();
+
+        List<String> disciplins=new ArrayList<String>();
+   /*     disciplins.add("Treadmill");
+        disciplins.add("Cross Trainer");
+        disciplins.add("Stair-Master");
+        disciplins.add("Ergometer");
+        disciplins.add("Spinning Bike");
+        disciplins.add("Rowing maschine");
+        disciplins.add("Push-Ups");
+        disciplins.add("Sit-Ups");
+        disciplins.add("Squats");
+        disciplins.add("Pull-Ups");
+        disciplins.add("Burpees");*/
 
         int hour=0;
 
-        List<String> act_list=new ArrayList<String>();
+        List<Integer> act_list=new ArrayList<Integer>();
         for(Activity a : activityDataAccess.getAllActivitiesPerDay(date)) {
-            series.add(hour++,a.getDurationPerActivity());
+            Log.i("STATICTIC_ACT",a.getDurationPerActivity()+"");
+            series.add(hour++,a.getCalories());
+            series.setTitle(a.getSportType());
+            disciplins.add(a.getSportType());
+
         }
+        dataset.addSeries(series);
         XYSeriesRenderer renderer=new XYSeriesRenderer();
-        renderer.setLineWidth(2);
-        //renderer.setColor(Color.);
+
+        renderer.setLineWidth(4);
+        renderer.setColor(R.color.colorPrimaryDark);
+        renderer.setDisplayBoundingPoints(true);
+        renderer.setPointStyle(PointStyle.CIRCLE);
+        renderer.setPointStrokeWidth(5);
+
+        XYMultipleSeriesRenderer mRenderer=new XYMultipleSeriesRenderer();
+        mRenderer.addSeriesRenderer(renderer);
+        mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));
+        mRenderer.setPanEnabled(false, false);
+     //   mRenderer.setYAxisMax(200);
+     //   mRenderer.setXAxisMax(4000);
+        mRenderer.setShowGrid(true);
+        for(int i=0;i< disciplins.size();i++){
+            mRenderer.addXTextLabel(i+1,disciplins.get(i));
+        }
+        mRenderer.setXLabelsAlign(Paint.Align.CENTER);
+        mRenderer.setXLabels(0);
+        mRenderer.setXLabelsColor(R.color.colorPrimaryText);
+        mRenderer.setYTitle("Calories");
+        mRenderer.setXTitle("Discipline");
+        mRenderer.setBarWidth(100);
+        mRenderer.setLegendTextSize(24);
+      // mRenderer.setXAxisMin(100);
+      //  mRenderer.setXAxisMax(100);
+       /* mRenderer.setYAxisMin(50);
+        mRenderer.setYAxisMax(500);*/
+       // mRenderer.setOrientation(XYMultipleSeriesRenderer.Orientation.VERTICAL);
+        mRenderer.setGridColor(R.color.colorPrimaryText);
+        mRenderer.setLabelsColor(R.color.colorPrimaryText);
+
+
+       // GraphicalView chartView = ChartFactory.getLineChartView(this,dataset , mRenderer);
+        GraphicalView chartView=ChartFactory.getBarChartView(this,dataset,mRenderer, BarChart.Type.DEFAULT);
+        llChart.addView(chartView,0);
     }
 
 }
