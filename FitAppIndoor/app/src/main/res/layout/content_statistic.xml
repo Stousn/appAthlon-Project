@@ -29,9 +29,12 @@
         android:orientation="vertical"
         android:id="@+id/chartDuration">
     </LinearLayout>
-
-    <TableLayout android:id="@+id/detail_day"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:padding="10dip" android:stretchColumns="*" android:layout_below="@id/txtDuration">
-    </TableLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <TableLayout android:id="@+id/detail_day"
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:padding="10dip" android:stretchColumns="*" android:layout_below="@id/txtDuration">
+        </TableLayout>
+    </ScrollView>
 </LinearLayout>
