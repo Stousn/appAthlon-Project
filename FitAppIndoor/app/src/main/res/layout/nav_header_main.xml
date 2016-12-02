@@ -24,9 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="FITAPP"
+        android:text="FITAPP GmbH"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        tools:text="FITAPP GmbH" />
+        tools:text="FITAPP GmbH"
+        android:id="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView"
