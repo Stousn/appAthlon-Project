@@ -29,13 +29,13 @@ import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
 public class AddActivityActivity extends AppCompatActivity {
     private ActivityDataAccess activityDataAccess;
-    private int sumCalPerDay,sumActPerDay, sumDistPerDay,sumAmountExPerDay;
+    private int sumCalPerDay, sumActPerDay, sumDistPerDay, sumAmountExPerDay;
     private Spinner spiSportType;
     private String sportType;
-    private EditText edtCal,edtMin,edtAmo;
+    private EditText edtCal, edtMin, edtAmo;
     private Button butSave;
     private String amountMin;
-    private int amountCal,amountEx;
+    private int amountCal, amountEx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class AddActivityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        spiSportType=(Spinner)findViewById(R.id.activityType_spinner);
+        spiSportType = (Spinner) findViewById(R.id.activityType_spinner);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,18 +54,18 @@ public class AddActivityActivity extends AppCompatActivity {
             }
         });
 
-        edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
-        edtCal=(EditText) findViewById(R.id.activityAmountKcal);
-        edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
-        butSave=(Button) findViewById(R.id.activitySave);
+        edtAmo = (EditText) findViewById(R.id.activityAmountAmount);
+        edtCal = (EditText) findViewById(R.id.activityAmountKcal);
+        edtMin = (EditText) findViewById(R.id.activityAmountMinutes);
+        butSave = (Button) findViewById(R.id.activitySave);
 
-        activityDataAccess=new ActivityDataAccess(this);
+        activityDataAccess = new ActivityDataAccess(this);
 
         spiSportType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Object item=parent.getItemAtPosition(position);
-                sportType=item.toString();
+                Object item = parent.getItemAtPosition(position);
+                sportType = item.toString();
 
             }
 
@@ -77,10 +77,10 @@ public class AddActivityActivity extends AppCompatActivity {
         butSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sportType != null){
-                    amountCal=Integer.parseInt(edtCal.getText().toString());
-                    amountEx=Integer.parseInt(edtAmo.getText().toString());
-                    amountMin=edtMin.getText().toString();
+                if (sportType != null) {
+                    amountCal = Integer.parseInt(edtCal.getText().toString());
+                    amountEx = Integer.parseInt(edtAmo.getText().toString());
+                    amountMin = edtMin.getText().toString();
                     addActivity();
                 }
 
@@ -89,19 +89,24 @@ public class AddActivityActivity extends AppCompatActivity {
             }
         });
 
-        }
+    }
 
-    public void addActivity(){
+    public void addActivity() {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
 
-        Activity a=new Activity(1,sportType,100,amountEx,date,amountCal,amountMin);
+        Activity a = new Activity(1, sportType, 100, amountEx, date, amountCal, amountMin);
+
+        if (a.getCalories() == 0) {
+            a = calcActivityCal(a);
+        }
+
         activityDataAccess.addNewActivity(a);
     }
 
-    private void showEntries(){
-        Intent i=new Intent(this,MainActivity.class);
+    private void showEntries() {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
@@ -109,8 +114,72 @@ public class AddActivityActivity extends AppCompatActivity {
     public void showTimePickerDialog(View v) {
 
         DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(),"TimePicker");
+        newFragment.show(getFragmentManager(), "TimePicker");
 
     }
 
+    public int calcCal(int heartRate, String timeStr) {
+        //Time in Minutes
+        timeStr = "25";
+        int age = 25;
+        int weight = 60;
+        boolean isWoman = true;
+        if (!isWoman) {
+            return (int) (((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * Integer.parseInt(timeStr) / 4.184);
+        } else {
+            return (int) (((age * 0.074) - (weight * 0.05741) + (heartRate * 0.4472) - 20.4022) * Integer.parseInt(timeStr) / 4.184);
+        }
+
+    }
+    public Activity calcActivityCal(Activity a){
+        int heartRate;
+        switch(a.getSportType()) {
+            case "Treadmill":
+                //Calculation
+                heartRate = 160;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Cross Trainer":
+                //Calculation
+                heartRate = 160;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Stair-Master":
+                //Calculation
+                heartRate = 160;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Ergometer":
+                //Calculation
+                heartRate = 160;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Push-Ups":
+                //Calculation
+                heartRate = 170;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Sit-Ups":
+                //Calculation
+                heartRate = 170;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Squats":
+                //Calculation
+                heartRate = 170;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Pull-Ups":
+                //Calculation
+                heartRate = 170;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+            case "Burpees":
+                //Calculation
+                heartRate = 170;
+                a.setCalories(calcCal(heartRate, a.getDuration()));
+                break;
+        }
+        return a;
+    }
 }
