@@ -22,11 +22,18 @@ public class ActivityDBHelper extends SQLiteOpenHelper {
             DISTANCE+" integer," +
             AMOUNT_P_E+" integer," +
             DATE_EXERC+" date," +
-            DURATION+" time," +
+            DURATION+" datetime," +
             CALOR+" integer)";
+
+    private static final String DELETE_VALUES="DELETE FROM "+TABLE_NAME;
 
     public ActivityDBHelper(Context context) {
         super(context, "ACTIVITY_DB", null, 1);
+    }
+
+    public void deleteValues(SQLiteDatabase db){
+        db.execSQL(DELETE_VALUES);
+        db.close();
     }
 
     @Override

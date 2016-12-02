@@ -20,7 +20,7 @@
         android:textSize="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="119dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:id="@+id/txtDate" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtDate"
         android:layout_alignEnd="@+id/txtDate"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="17dp"
         android:id="@+id/txtCal" />
 
@@ -39,7 +39,7 @@
         android:text="Calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="5dp"
         android:id="@+id/txtCalorien"
         android:layout_below="@+id/txtCal" />
@@ -71,7 +71,7 @@
         android:layout_below="@+id/txtCalorien"
         android:layout_alignParentStart="true"
         android:textSize="24dp"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="17dp"
         android:id="@+id/txtDist" />
 
@@ -96,7 +96,7 @@
         android:id="@+id/txtExec" />
 
     <TextView
-        android:text="Execution"
+        android:text="Executions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
@@ -124,5 +124,10 @@
         android:id="@+id/txtDuration"
         android:layout_below="@+id/txtDist" />
 
-    <!--Distance,ExecutionDuration -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="2dp"
+        android:background="#000000" />
+
 </RelativeLayout>

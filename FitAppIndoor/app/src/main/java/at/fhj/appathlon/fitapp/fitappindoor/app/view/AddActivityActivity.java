@@ -32,10 +32,10 @@ public class AddActivityActivity extends AppCompatActivity {
     private int sumCalPerDay, sumActPerDay, sumDistPerDay, sumAmountExPerDay;
     private Spinner spiSportType;
     private String sportType;
-    private EditText edtCal, edtMin, edtAmo;
+    private EditText edtCal,edtMin,edtAmo,edtDist;
     private Button butSave;
     private String amountMin;
-    private int amountCal, amountEx;
+    private int amountCal,amountEx,amountDist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,11 @@ public class AddActivityActivity extends AppCompatActivity {
             }
         });
 
-        edtAmo = (EditText) findViewById(R.id.activityAmountAmount);
-        edtCal = (EditText) findViewById(R.id.activityAmountKcal);
-        edtMin = (EditText) findViewById(R.id.activityAmountMinutes);
-        butSave = (Button) findViewById(R.id.activitySave);
+        edtAmo=(EditText) findViewById(R.id.activityAmountAmount);
+        edtCal=(EditText) findViewById(R.id.activityAmountKcal);
+        edtMin=(EditText) findViewById(R.id.activityAmountMinutes);
+        edtDist=(EditText) findViewById(R.id.activityAmountKm);
+        butSave=(Button) findViewById(R.id.activitySave);
 
         activityDataAccess = new ActivityDataAccess(this);
 
@@ -77,10 +78,11 @@ public class AddActivityActivity extends AppCompatActivity {
         butSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sportType != null) {
-                    amountCal = Integer.parseInt(edtCal.getText().toString());
-                    amountEx = Integer.parseInt(edtAmo.getText().toString());
-                    amountMin = edtMin.getText().toString();
+                if(sportType != null){
+                    amountCal=Integer.parseInt(edtCal.getText().toString());
+                    amountEx=Integer.parseInt(edtAmo.getText().toString());
+                    amountMin=edtMin.getText().toString();
+                    amountDist=Integer.parseInt( edtDist.getText().toString());
                     addActivity();
                 }
 
@@ -95,13 +97,13 @@ public class AddActivityActivity extends AppCompatActivity {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
-
-        Activity a = new Activity(1, sportType, 100, amountEx, date, amountCal, amountMin);
+        Log.i("DATE",date);
+        
+        Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
         if (a.getCalories() == 0) {
             a = calcActivityCal(a);
         }
-
         activityDataAccess.addNewActivity(a);
     }
 
