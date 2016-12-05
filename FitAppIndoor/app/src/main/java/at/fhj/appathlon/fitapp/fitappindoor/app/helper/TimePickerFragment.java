@@ -1,7 +1,7 @@
 package at.fhj.appathlon.fitapp.fitappindoor.app.helper;
 
 /**
- * Created by Stefan on 01.12.16.
+ * Created by Stefan Reip on 01.12.16.
  */
 
 import android.app.TimePickerDialog;

@@ -44,13 +44,14 @@ import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
 import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
 /**
- * Created by vicky on 01.12.2016.
+ * Created by Viktoria Lind on 01.12.2016.
  */
 
 public class Statistics extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityDataAccess activityDataAccess;
     private LinearLayout llChart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,21 +59,23 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        //Set plus button to add a new activity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 getActivity();
             }
         });
 
+        //Sets toolbar and navigation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //Get some GUI elements of the diary screen
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -114,7 +117,7 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**If some activity is selected in the menu -> Start activity /w an intent*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -162,11 +165,13 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         return true;
     }
 
+    /**Calls the page to add a new activity*/
     public void getActivity() {
         Intent i = new Intent(this, AddActivityActivity.class);
         startActivity(i);
     }
 
+    /**Fancy diagramm on the statistics page :)*/
     public void drawdiagramm(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String date = sdf.format(new Date());
@@ -236,21 +241,19 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
         llChart.addView(chartView,0);
     }
 
+    /**A list provides a detailed view of all workouts of the day.*/
     private void setWorkoutOfDay() {
         ActivityDataAccess adao = new ActivityDataAccess(this.getApplicationContext());
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-
         List<Activity> al = new ArrayList<Activity>();
-
         al = adao.getAllActivitiesPerDay(sdf.format(new Date()));
 
         /* Find Tablelayout defined in main.xml */
         TableLayout tl = (TableLayout) findViewById(R.id.detail_day);
 
         for (Activity activity : al) {
-            Log.i("ACTIVITY", activity.toString());
-            /* Create a new row to be added. */
+            // Log.i("ACTIVITY", activity.toString());
+            //Fancy Layouting stuff
             TableRow trLine = new TableRow(this);
             trLine.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             View line = new View(this);
@@ -266,10 +269,11 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
             space.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 15));
             tl.addView(space);
 
-
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            // Activity Name
+
+
+            // Adding the activity name
             TextView sportTypeTV = new TextView(this);
             sportTypeTV.setText(activity.getSportType());
             sportTypeTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -277,31 +281,26 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
             sportTypeTV.setTextColor(Color.DKGRAY);
             tr.addView(sportTypeTV);
 
-            // Duration
+            // Adding the duration of the activity
             TextView durationTV = new TextView(this);
             durationTV.setText("Duration: " + activity.getDurationPerActivity());
-            //if(activity.getDuration() == null){
-            //    durationTV.setText("Durartion: " + "0");
-            //}
             durationTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             tr.addView(durationTV);
 
-
-            // KCAL
+            // Adding KCAL for the workout
             TextView calTV = new TextView(this);
             calTV.setText(activity.getCalories() + " kcal");
             calTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             calTV.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             tr.addView(calTV);
 
-            //Space 2
+            //Some space
             TableRow trSpace2 = new TableRow(this);
             trSpace2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             View space2 = new View(this);
 
             space2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 20));
             tl.addView(space2);
-
 
             /* Add row to TableLayout. */
             //tr.setBackgroundResource(R.drawable.sf_gradient_03);
@@ -311,4 +310,4 @@ public class Statistics extends AppCompatActivity implements NavigationView.OnNa
 
     }
 
-    }
+}

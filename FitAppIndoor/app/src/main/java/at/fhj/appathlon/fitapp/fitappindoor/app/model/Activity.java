@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- * Created by vicky on 01.12.2016.
+ * Created by Viktoria Lind on 01.12.2016.
  */
 
 public class Activity {

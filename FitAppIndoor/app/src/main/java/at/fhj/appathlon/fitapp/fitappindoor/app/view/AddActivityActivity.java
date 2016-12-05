@@ -30,6 +30,9 @@ import at.fhj.appathlon.fitapp.fitappindoor.app.helper.TimePickerFragment;
 import at.fhj.appathlon.fitapp.fitappindoor.app.model.Activity;
 import at.fhj.appathlon.fitapp.fitappindoor.app.model.ActivityDataAccess;
 
+/**
+ * Created by Stefan Reip on 01.12.2016.
+ */
 public class AddActivityActivity extends AppCompatActivity {
     private ActivityDataAccess activityDataAccess;
     private int sumCalPerDay, sumActPerDay, sumDistPerDay, sumAmountExPerDay;
@@ -42,6 +45,8 @@ public class AddActivityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set some GUI Views
         setContentView(R.layout.activity_add_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,19 +60,19 @@ public class AddActivityActivity extends AppCompatActivity {
 
         activityDataAccess = new ActivityDataAccess(this);
 
+        //Dropdown of sport type. Get's the selected item
         spiSportType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
                 sportType = item.toString();
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
+
+        /**Listens on save button and gets data if they are set correctly. If not -> Toast with error message*/
         butSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +97,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
     }
 
+    /**Creates a new activity and sets all parameters from the input data + current date*/
     public void addActivity() {
         //TODO Activity Übergabeparamter einlesen
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -99,18 +105,20 @@ public class AddActivityActivity extends AppCompatActivity {
 
         Activity a=new Activity(1,sportType,amountDist,amountEx,date,amountCal,amountMin);
 
+        //If no calories where added they will be calculated
         if (a.getCalories() == 0) {
             a = calcActivityCal(a);
         }
         activityDataAccess.addNewActivity(a);
     }
 
+    /**After adding an activity -> return to MainActivity (Diary)*/
     private void showEntries() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-
+    // OLD. Can this be removed?
     public void showTimePickerDialog(View v) {
 
         DialogFragment newFragment = new TimePickerFragment();
@@ -118,12 +126,15 @@ public class AddActivityActivity extends AppCompatActivity {
 
     }
 
+    /**Calculates Calories
+     * ATTENTION: Some hardcoded values are there by now. They need to be less hardcoded ;)
+     * @values: heartRate, timeString in minutes
+     * */
     public int calcCal(int heartRate, int timeStr) {
-        //Time in Minutes
-       // timeStr = 25;
-        int age = 25;
-        int weight = 60;
-        boolean isWoman = true;
+        int age = 25; //TODO: Change age to the age that could be set from Date of Birth from Log-In
+        int weight = 60; //TODO: Change weight to the weight that could be set in WeightLog
+        boolean isWoman = true; //TODO: Change isWoman to the gender that could be set by Log-In
+        /*Fancy calculation from somewhere in the Internet. I'm sorry but I don't know the source anymore*/
         if (!isWoman) {
             return (int) (((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * timeStr / 4.184);
         } else {
@@ -131,55 +142,45 @@ public class AddActivityActivity extends AppCompatActivity {
         }
 
     }
+
+    /**Calculates Calories for an activity
+     * By now the activities are selected by their name. Maybe it could be set via an ID in the
+     * Database in the future.
+     * ATTENTION: heartRate values are hardcoded. Maybee there are some values that would be more
+     * accurate. */
     public Activity calcActivityCal(Activity a){
-        int heartRate;
+        int heartRate = 0;
+        //Changes heartRate for each sport type
         switch(a.getSportType()) {
             case "Treadmill":
-                //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Cross Trainer":
-                //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Stair-Master":
-                //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Ergometer":
-                //Calculation
                 heartRate = 160;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Push-Ups":
-                //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Sit-Ups":
-                //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Squats":
-                //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Pull-Ups":
-                //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
             case "Burpees":
-                //Calculation
                 heartRate = 170;
-                a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
                 break;
         }
+        a.setCalories(calcCal(heartRate, a.getDurationPerActivity()));
         return a;
     }
 }

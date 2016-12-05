@@ -8,9 +8,8 @@ import at.fhj.appathlon.fitapp.fitappindoor.R;
 
 
 /**
- * Created by Patrik on 02.12.2016.
+ * Created by Patrik Holzer on 02.12.2016.
  */
-
 public class Mail extends AppCompatActivity  {
 
     @Override
