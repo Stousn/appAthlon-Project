@@ -37,4 +37,5 @@
 
 
     <string name="activitySaveBtn">Save</string>
+    <string name="mailto">Please write a Mail to <a href="mailto:daniel.wohlmuth.90@gmail.com">daniel.wohlmuth.90@gmail.com</a></string>
 </resources>

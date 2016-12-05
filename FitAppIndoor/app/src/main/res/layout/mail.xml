@@ -26,13 +26,15 @@ tools:context="at.fhj.appathlon.fitapp.fitappindoor.app.view.AddActivityActivity
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/nav_header_height"
         android:layout_marginLeft="@dimen/activity_vertical_margin">
+
         <TextView
-            android:text="Please write a Mail to daniel.wohlmuth.90@gmail.com"
+            android:autoLink="web"
+            android:text="@string/mailto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/MailText"
             tools:text="Please write a Mail!"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textColor="@android:color/background_dark"
             />
 
